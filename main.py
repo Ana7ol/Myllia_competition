@@ -37,6 +37,7 @@ import warnings
 import json
 import time
 import math
+import tqdm
 import numpy as np
 import pandas as pd
 import requests
@@ -418,8 +419,9 @@ def train_gcn(G: nx.Graph,
 
     print(f"   Training GCN for up to {CFG['gcn_epochs']} epochs "
           f"on {device} (patience={CFG['gcn_patience']})…")
-
-    for epoch in range(1, CFG["gcn_epochs"] + 1):
+    
+    
+    for epoch in tqdm.trange(1, CFG["gcn_epochs"] + 1, desc="GCN Training"):
         model.train()
         # Mini-batch over perturbations
         total_loss = 0.0

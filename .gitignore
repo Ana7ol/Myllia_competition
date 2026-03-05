@@ -1,3 +1,4 @@
-*.csv
-*.txt
-training_cells.*
+/datasets
+/images
+/venv
+.gitignore
